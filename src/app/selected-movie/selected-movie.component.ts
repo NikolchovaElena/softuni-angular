@@ -17,6 +17,7 @@ export class SelectedMovieComponent implements OnInit {
   //  this.id = this.route.snapshot.params['id'];
     this.route.params.subscribe((params) => {
       this.id = params['id'];
+      
     })
 
     this.moviesService.getMovie(this.id).subscribe(movie => {
