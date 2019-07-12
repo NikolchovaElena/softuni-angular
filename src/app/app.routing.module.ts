@@ -10,7 +10,7 @@ const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'movie' },
     { path: 'movie', component: MoviesComponent },
     { path: 'movie/search', component: SearchComponent },
-    { path: 'movie/:id', component: SelectedMovieComponent, resolve: SingleMovieResolver }
+    { path: 'movie/:id', component: SelectedMovieComponent, resolve: { singleMovie: SingleMovieResolver } }
 ];
 
 @NgModule({
