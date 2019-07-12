@@ -23,6 +23,5 @@ export class SearchComponent implements OnInit {
         this.results = data;
       })
     })
-
   }
 }
