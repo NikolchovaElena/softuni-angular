@@ -35,7 +35,11 @@ export class MoviesService {
     return this.http.get<Movie>(`${this.path}${this.dramas}${this.authentication}${apiKey}`);
   }
 
-  getMovie(id): Observable<Movie>  {
+  getMovie(id): Observable<Movie> {
     return this.http.get<Movie>(`${this.path}${this.movie}` + id + `${this.movieAuth}${apiKey}`);
+  }
+
+  findAMovie(query: string) {
+    return this.http.get<Movie[]>(`${this.path}` + 'search/movie' + `${this.movieAuth}${apiKey}` + `&query=${query}`);
   }
 }

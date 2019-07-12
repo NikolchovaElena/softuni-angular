@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
   title: string = "Movie Finder";
-  constructor() { }
+  @ViewChild('f', { static: false }) searchForm: NgForm;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  search() {
+    const query = this.searchForm.value.search;
+    
+    this.router.navigate(['/movie/search'], { queryParams: { search: query } })
   }
 
 }
