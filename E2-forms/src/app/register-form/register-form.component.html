@@ -3,7 +3,7 @@
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
       <h1>Registration Form</h1>
-      <form #form="ngForm" (submit)="register(form)">
+      <form #form="ngForm" (submit)="register(form.value)">
         <pre>{{form.value| json}}</pre>
         <div class="form-group input-group">
           <div class="input-group-prepend">
@@ -81,8 +81,18 @@
             *ngIf="form?.controls.passwords?.controls.password?.value != form?.controls.passwords?.controls.repeatPassword?.value">
             Passwords don't match!</div>
         </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-image"></i> </span>
+          </div>
+          <input name="imgUrl" appImgUrlValidation class="form-control" placeholder="Image url" type="url" required
+            ngModel>
+        </div>
+        <div class="alert alert-danger" *ngIf="form.errors?.image"> Invalid image url!</div>
         <div class="form-group">
-          <button type="submit" [disabled]="form.invalid || form?.controls.passwords?.controls.password?.value != form?.controls.passwords?.controls.repeatPassword?.value" class="btn btn-primary btn-block"> Create Account </button>
+          <button type="submit"
+            [disabled]="form.invalid || form?.controls.passwords?.controls.password?.value != form?.controls.passwords?.controls.repeatPassword?.value"
+            class="btn btn-primary btn-block"> Create Account </button>
         </div>
         <p class="text-center">Have an account? <a href="">Log In</a> </p>
       </form>
